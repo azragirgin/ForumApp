@@ -147,8 +147,8 @@ module.exports = function (app, shopData, db) {
     });
   });
 
-  app.get("/addposts", function (req, res) {
-    res.render("addposts.ejs");
+  app.get("/addpost", function (req, res) {
+    res.render("addpost.ejs");
   });
 
   app.post("/postadded", function (req, res) {
