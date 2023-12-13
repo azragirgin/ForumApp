@@ -9,7 +9,10 @@
     <h1>List of Posts</h1>
     <ul>
       <% for(let i = 0; i < forumPosts.length; i++) { %>
-      <li><%= forumPosts[i].name %> - <%= forumPosts[i].created_at %></li>
+      <li>
+        <%= forumPosts[i].id %> - <%= forumPosts[i].user_id %> - <%=
+        forumPosts[i].content %> - <%= forumPosts[i].created_at %>
+      </li>
       <% } %>
     </ul>
   </body>
