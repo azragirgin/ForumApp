@@ -1,0 +1,33 @@
+<!-- addposts.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Posts</title>
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+  </head>
+  <body>
+    <h1>Add Posts</h1>
+
+    <!-- Form for adding posts -->
+    <form method="POST" action="/addposts">
+      <!-- Input field for username -->
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required />
+
+      <!-- Input field for topic -->
+      <label for="topic">Topic:</label>
+      <input type="text" id="topic" name="topic" required />
+
+      <!-- Textarea for post content -->
+      <label for="content">Post Content:</label>
+      <input type="content" id="content" name="content" required />
+
+      <!-- Submit button -->
+      <button type="submit">Add Post</button>
+    </form>
+
+    <!-- Include any additional content or scripts here -->
+  </body>
+</html>
