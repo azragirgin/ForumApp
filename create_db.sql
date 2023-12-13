@@ -8,11 +8,7 @@ USE ForumApp;
 CREATE USER 'appuser'@'localhost' IDENTIFIED WITH mysql_native_password BY 'app2027';
 GRANT ALL PRIVILEGES ON ForumApp.* TO 'appuser'@'localhost';
 
-
 CREATE TABLE IF NOT EXISTS Topics (id INT AUTO_INCREMENT,name VARCHAR(50),price DECIMAL(5, 2) unsigned,PRIMARY KEY(id));
-
-
-
 
 
 # Create the tables
@@ -22,8 +18,6 @@ CREATE TABLE IF NOT EXISTS Users (
     email VARCHAR(100) NOT NULL,
     password VARCHAR(255) NOT NULL
 );
-
-# Create the tables
 CREATE TABLE IF NOT EXISTS Forum (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
