@@ -1,0 +1,16 @@
+<!-- posts.ejs -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>List of Posts</title>
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+  </head>
+  <body>
+    <h1>List of Posts</h1>
+    <ul>
+      <% for(let i = 0; i < forumPosts.length; i++) { %>
+      <li><%= forumPosts[i].name %> - <%= forumPosts[i].created_at %></li>
+      <% } %>
+    </ul>
+  </body>
+</html>

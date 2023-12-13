@@ -1,0 +1,18 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+    <title>Add Post Form</title>
+  </head>
+  <body>
+    <h1>Add a New Post</h1>
+    <form method="POST" action="/addposts">
+      <label for="name">Post Name:</label>
+      <input type="text" id="name" name="name" required />
+      <p>username: <input id="username" name="username" required /></p>
+      <input type="submit" value="Add Post" />
+    </form>
+  </body>
+</html>

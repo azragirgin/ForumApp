@@ -1,0 +1,19 @@
+<!-- topicdetails.ejs -->
+<h1>Topic Details</h1>
+
+<section>
+  <h2>Topic Information</h2>
+  <p>Topic Name: <%= Topic.name %></p>
+</section>
+
+<section>
+  <h2>Posts</h2>
+  <ul>
+    <% posts.forEach(post => { %>
+    <li>
+      <p>Title: <%= post.Title %></p>
+      <p>Content: <%= post.content %></p>
+    </li>
+    <% }); %>
+  </ul>
+</section>
