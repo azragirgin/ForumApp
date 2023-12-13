@@ -36,14 +36,14 @@ CREATE TABLE IF NOT EXISTS Posts (
   FOREIGN KEY (user_id) REFERENCES Users(id)
 );
 
-CREATE TABLE IF NOT EXISTS addpost (
+CREATE TABLE IF NOT EXISTS addposts (
   post_id INT AUTO_INCREMENT PRIMARY KEY,
   user_id INT,
   topic_id INT,
   text TEXT,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (user_id) REFERENCES Users(user_id),
-  FOREIGN KEY (topic_id) REFERENCES Topics(topic_id)
+  FOREIGN KEY (user_id) REFERENCES Users(id),
+  FOREIGN KEY (topic_id) REFERENCES Topics(id)
 );
 
 
