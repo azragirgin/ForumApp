@@ -132,7 +132,7 @@ module.exports = function (app, shopData, db) {
   });
 
   app.get("/listposts", function (req, res) {
-    let sqlQuery = "SELECT * FROM Forum";
+    let sqlQuery = "SELECT * FROM Posts";
     db.query(sqlQuery, (err, result) => {
       if (err) {
         console.error(err.message);
@@ -152,34 +152,23 @@ module.exports = function (app, shopData, db) {
   });
 
   app.post("/postadded", function (req, res) {
-    let sqlquery = "SELECT user_id FROM Users where username=?";
-
-    db.query(sqlquery, [req.body.topic], (err, result1) => {
+    // saving the data in database
+    let sqlquery =
+      "INSERT INTO Posts (id,content, user_id, created_at) VALUES (?,?,?, NOW())";
+    // executing sql query
+    let newrecord = [req.body.id, req.body.content, req.body.user_id];
+    db.query(sqlquery, newrecord, (err, result) => {
       if (err) {
-        res.redirect("./");
+        return console.error(err.message);
+      } else {
+        res.send(
+          " This post is added to database, name: " +
+            req.body.id +
+            " content " +
+            req.body.content +
+            req.body.user_id
+        );
       }
-      user_id = result1[0].user_id;
-
-      let sqlquery2 = "SELECT topic_id From Topics WHERE name?";
-      db.query(sqlquery2, [req.body.topic], (err, result2) => {
-        if (err) {
-          res.redirect("./");
-        }
-      });
-      let topic_id = result2[0].topic_id;
-
-      let sqlquery3 =
-        "INSERT INTO Posts (text, user_id, created_at) VALUES(?, ?, NOW())";
-      db.query(
-        sqlquery3,
-        [req.body.content, user_id, topic_id],
-        (err, result2) => {
-          if (err) {
-            res.redirect("./");
-          }
-          res.send("All done");
-        }
-      );
     });
   });
   // Handle the actual post deletion
