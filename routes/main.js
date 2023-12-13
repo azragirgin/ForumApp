@@ -125,7 +125,7 @@ module.exports = function (app, shopData, db) {
   app.post("/registered", function (req, res) {
     // Saving the data in the database
     let sqlquery =
-      "INSERT INTO users (id, username, email, password) VALUES (?,?,?, '123')";
+      "INSERT INTO Users (id, username, email, password) VALUES (?,?,?, '123')";
     // executing sql query
     let newrecord = [req.body.id, req.body.username, req.body.email];
     db.query(sqlquery, newrecord, (err, result) => {
