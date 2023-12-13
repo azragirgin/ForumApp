@@ -97,40 +97,6 @@ module.exports = function (app, shopData, db) {
       }
     });
   });
-
-  app.get("/topicdetails/:id", function (req, res) {
-    let topicId = req.params.id;
-
-    // Assuming you have a function to get topic details and posts by ID from the database
-    // Modify this as per your actual database structure
-    let sqlQuery = "SELECT * FROM Topics WHERE id = ?";
-    db.query(sqlQuery, [topicId], (err, topicResult) => {
-      if (err || topicResult.length === 0) {
-        res.redirect("/");
-      } else {
-        let topicData = topicResult[0];
-
-        // Assuming you have a function to get posts for a specific topic from the database
-        // Modify this as per your actual database structure
-        let postsQuery = "SELECT * FROM Posts WHERE topic_id = ?";
-        db.query(postsQuery, [topicId], (err, postsResult) => {
-          if (err) {
-            console.error(err.message);
-            res.redirect("/");
-          } else {
-            let postsData = postsResult;
-
-            // Render the topicdetails.ejs template with the topic and posts data
-            res.render("topicdetails.ejs", {
-              topic: topicData,
-              posts: postsData,
-            });
-          }
-        });
-      }
-    });
-  });
-
   app.get("/listposts", function (req, res) {
     let sqlQuery = "SELECT * FROM Posts";
     db.query(sqlQuery, (err, result) => {
