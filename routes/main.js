@@ -81,22 +81,6 @@ module.exports = function (app, shopData, db) {
     });
   });
 
-  // Display confirmation page for deleting a post
-  app.get("/deleteposts/:id", function (req, res) {
-    let postId = req.params.id;
-
-    // Assuming you have a function to get post details by ID from the database
-    // Modify this as per your actual database structure
-    let sqlQuery = "SELECT * FROM Forum WHERE id = ?";
-    db.query(sqlQuery, [postId], (err, result) => {
-      if (err || result.length === 0) {
-        res.redirect("/");
-      } else {
-        let postData = result[0];
-        res.render("deleteposts.ejs", { post: postData });
-      }
-    });
-  });
   app.get("/listposts", function (req, res) {
     let sqlQuery = "SELECT * FROM Posts";
     db.query(sqlQuery, (err, result) => {
@@ -137,32 +121,28 @@ module.exports = function (app, shopData, db) {
       }
     });
   });
-  // Handle the actual post deletion
-  app.post("/deleteposts/:id", function (req, res) {
-    let postId = req.params.id;
-
-    // Assuming you have a function to delete a post by ID from the database
-    // Modify this as per your actual database structure
-    let sqlQuery = "DELETE FROM Forum WHERE id = ?";
-    db.query(sqlQuery, [postId], (err, result) => {
-      if (err) {
-        console.error(err.message);
-        res.status(500).send("Internal Server Error");
-      } else {
-        res.redirect("/");
-      }
-    });
-  });
 
   app.post("/registered", function (req, res) {
     // Saving the data in the database
-    res.send(
-      "Hello " +
-        req.body.first +
-        " " +
-        req.body.last +
-        " you are now registered!  We will send an email to you at " +
-        req.body.email
-    );
+    let sqlquery =
+      "INSERT INTO users (id, username, email, password) VALUES (?,?,?, '123')";
+    // executing sql query
+    let newrecord = [req.body.id, req.body.username, req.body.email];
+    db.query(sqlquery, newrecord, (err, result) => {
+      if (err) {
+        return console.error(err.message);
+      } else {
+        res.send(
+          " Hello " +
+            req.body.id +
+            " " +
+            req.body.username +
+            " you are now registered! We will send an email to you at " +
+            req.body.email +
+            ", with your " +
+            req.body.password
+        );
+      }
+    });
   });
 };
