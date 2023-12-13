@@ -1,5 +1,8 @@
 # Create database script for Forum App
 
+# Create the app user and give it access to the database
+CREATE USER 'appuser'@'localhost' IDENTIFIED WITH mysql_native_password BY 'app2027';
+GRANT ALL PRIVILEGES ON ForumApp.* TO 'appuser'@'localhost';
 # Create the database
 CREATE DATABASE ForumApp;
 USE ForumApp;
@@ -8,7 +11,11 @@ USE ForumApp;
 CREATE TABLE Forum (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  topic_id INT,
+  user_id INT,
+  FOREIGN KEY (topic_id) REFERENCES Topics(id),
+  FOREIGN KEY (user_id) REFERENCES Users(id)
 );
 
 # Create the tables
