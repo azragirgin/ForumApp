@@ -152,40 +152,36 @@ module.exports = function (app, shopData, db) {
   });
 
   app.post("/postadded", function (req, res) {
-    let sqlquery = "SELECT user_id FROM Users WHERE username=?";
+    let sqlquery = "SELECT user_id FROM Users where username=?";
 
-    db.query(sqlquery, [req.body.username], (err, result1) => {
-      if (err || result1.length === 0) {
+    db.query(sqlquery, [req.body.topic], (err, result1) => {
+      if (err) {
         res.redirect("./");
-      } else {
-        let user_id = result1[0].user_id;
-
-        let sqlquery2 = "SELECT topic_id FROM Topics WHERE name=?";
-        db.query(sqlquery2, [req.body.topic], (err, result2) => {
-          if (err || result2.length === 0) {
-            res.redirect("./");
-          } else {
-            let topic_id = result2[0].topic_id;
-
-            let sqlquery3 =
-              "INSERT INTO Posts (text, user_id, topic_id, created_at) VALUES (?, ?, ?, NOW())";
-            db.query(
-              sqlquery3,
-              [req.body.content, user_id, topic_id],
-              (err, result3) => {
-                if (err) {
-                  res.redirect("./");
-                } else {
-                  res.send("All done");
-                }
-              }
-            );
-          }
-        });
       }
+      user_id = result1[0].user_id;
+
+      let sqlquery2 = "SELECT topic_id From Topics WHERE name?";
+      db.query(sqlquery2, [req.body.topic], (err, result2) => {
+        if (err) {
+          res.redirect("./");
+        }
+      });
+      let topic_id = result2[0].topic_id;
+
+      let sqlquery3 =
+        "INSERT INTO Posts (text, user_id, created_at) VALUES(?, ?, NOW())";
+      db.query(
+        sqlquery3,
+        [req.body.content, user_id, topic_id],
+        (err, result2) => {
+          if (err) {
+            res.redirect("./");
+          }
+          res.send("All done");
+        }
+      );
     });
   });
-
   // Handle the actual post deletion
   app.post("/deleteposts/:id", function (req, res) {
     let postId = req.params.id;
