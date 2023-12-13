@@ -10,7 +10,6 @@ GRANT ALL PRIVILEGES ON ForumApp.* TO 'appuser'@'localhost';
 
 CREATE TABLE IF NOT EXISTS Topics (id INT AUTO_INCREMENT,name VARCHAR(50),price DECIMAL(5, 2) unsigned,PRIMARY KEY(id));
 
-
 # Create the tables
 CREATE TABLE IF NOT EXISTS Users (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -28,7 +27,7 @@ CREATE TABLE IF NOT EXISTS Forum (
   FOREIGN KEY (user_id) REFERENCES Users(id)
 );
 
-# Create the tables
+# Create the IF NOT EXISTS tables
 CREATE TABLE IF NOT EXISTS Posts (
   id INT AUTO_INCREMENT PRIMARY KEY,
   content TEXT NOT NULL,
@@ -36,4 +35,15 @@ CREATE TABLE IF NOT EXISTS Posts (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (user_id) REFERENCES Users(id)
 );
+
+CREATE TABLE IF NOT EXISTS addpost (
+  post_id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT,
+  topic_id INT,
+  text TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES Users(user_id),
+  FOREIGN KEY (topic_id) REFERENCES Topics(topic_id)
+);2
+
 
