@@ -44,6 +44,6 @@ CREATE TABLE IF NOT EXISTS addpost (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (user_id) REFERENCES Users(user_id),
   FOREIGN KEY (topic_id) REFERENCES Topics(topic_id)
-);2
+);
 
 
