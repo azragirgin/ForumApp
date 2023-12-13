@@ -147,6 +147,10 @@ module.exports = function (app, shopData, db) {
     });
   });
 
+  app.get("/addposts", function (req, res) {
+    res.render("addposts.ejs");
+  });
+
   app.post("/addposts", function (req, res) {
     let sqlquery = "SELECT user_id FROM Users where username=?";
 
