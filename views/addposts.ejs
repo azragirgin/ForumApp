@@ -1,31 +1,43 @@
 <!-- addposts.ejs -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Head section with metadata and a link to the main CSS file -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add Posts</title>
     <link rel="stylesheet" type="text/css" href="/main.css" />
   </head>
   <body>
+    <!-- Body section starts here -->
+
+    <!-- Heading with the title of the page -->
     <h1>Add Posts</h1>
 
     <!-- Form for adding posts -->
     <form method="POST" action="/postadded">
-      <!-- Input field for username -->
+      <!-- Input field for post ID -->
       <label for="id">ID:</label>
       <input type="text" id="id" name="id" />
 
-      <label for="content">content:</label>
+      <!-- Input field for post content, marked as required -->
+      <label for="content">Content:</label>
       <input type="text" id="content" name="content" required />
 
-      <label for="user_id">user id:</label>
+      <!-- Input field for user ID, marked as required -->
+      <label for="user_id">User ID:</label>
       <input type="text" id="user_id" name="user_id" required />
 
-      <!-- Submit button -->
+      <!-- Submit button to add the post -->
       <button type="submit">Add Post</button>
     </form>
 
+    <!-- Line for prompting the user to choose ID1 or ID2 -->
+    <p>Choose ID1 or ID2</p>
+
     <!-- Include any additional content or scripts here -->
+
+    <!-- Body section ends here -->
   </body>
 </html>

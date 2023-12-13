@@ -1,19 +1,33 @@
 <!-- posts.ejs -->
+
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- Head section with the title and a link to the main CSS file -->
     <title>List of Posts</title>
     <link rel="stylesheet" type="text/css" href="/main.css" />
   </head>
   <body>
+    <!-- Body section starts here -->
+
+    <!-- Main heading indicating the page is a list of posts -->
     <h1>List of Posts</h1>
+
+    <!-- Unordered list to display the forum posts -->
     <ul>
+      <!-- Loop through each post in the 'forumPosts' array -->
       <% for(let i = 0; i < forumPosts.length; i++) { %>
+
+      <!-- List item for each post with dynamically inserted post details -->
       <li>
+        <!-- Post details: ID, User ID, Content, and Created At -->
         <%= forumPosts[i].id %> - <%= forumPosts[i].user_id %> - <%=
         forumPosts[i].content %> - <%= forumPosts[i].created_at %>
       </li>
+
       <% } %>
     </ul>
+
+    <!-- Body section ends here -->
   </body>
 </html>

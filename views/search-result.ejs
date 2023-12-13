@@ -1,30 +1,47 @@
 <!-- search-result.ejs -->
+
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- Head section with the title and a link to the main CSS file -->
     <title>Search Result</title>
     <link rel="stylesheet" type="text/css" href="/main.css" />
   </head>
   <body>
+    <!-- Body section starts here -->
+
+    <!-- Main heading indicating the page is for displaying search results -->
     <h1>Search Result for "<%= searchKeyword %>"</h1>
 
+    <!-- Heading for exact match results from basic search -->
     <h2>Exact Match (Basic Search)</h2>
+
+    <!-- Unordered list to display exact match results -->
     <ul>
+      <!-- Loop through each result in basicSearchResult -->
       <% for(let i = 0; i < basicSearchResult.length; i++) { %>
+      <!-- List item for each result, displaying name and Topics -->
       <li>
         <%= basicSearchResult[i].name %> - <%= basicSearchResult[i].Topics %>
       </li>
       <% } %>
     </ul>
 
+    <!-- Heading for partial match results from advanced search -->
     <h2>Partial Match (Advanced Search)</h2>
+
+    <!-- Unordered list to display partial match results -->
     <ul>
+      <!-- Loop through each result in advancedSearchResult -->
       <% for(let i = 0; i < advancedSearchResult.length; i++) { %>
+      <!-- List item for each result, displaying name and price -->
       <li>
         <%= advancedSearchResult[i].name %> - <%= advancedSearchResult[i].price
         %>
       </li>
       <% } %>
     </ul>
+
+    <!-- Body section ends here -->
   </body>
 </html>

@@ -1,31 +1,42 @@
+<!-- register.ejs -->
+
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- Head section with the title and a link to the main CSS file -->
     <title>Register for <%=shopName%></title>
     <link rel="stylesheet" type="text/css" href="/main.css" />
   </head>
   <body>
+    <!-- Body section starts here -->
+
+    <!-- Main heading indicating the page is for user registration -->
     <h1>Register for <%=shopName%></h1>
+
+    <!-- Form for user registration with a POST action to '/registered' -->
     <form method="POST" action="/registered">
-      <p>
-        Your Unique ID:
-        <input id="id" type="text" name="id" value="id" />
-      </p>
+      <!-- Input field for Unique ID -->
+      <p>Your Unique ID: <input id="id" type="text" name="id" value="id" /></p>
+
+      <!-- Input field for Username -->
       <p>
         Username:
         <input id="username" type="text" name="username" value="username" />
       </p>
+
+      <!-- Input field for Email -->
       <p>Email: <input id="email" type="email" name="email" value="email" /></p>
+
+      <!-- Input field for Password -->
       <p>
         Password:
-        <input
-          id="password"
-          type="passsword"
-          name="password"
-          value="password"
-        />
+        <input id="password" type="password" name="password" value="password" />
       </p>
+
+      <!-- Submit button to register the user -->
       <button type="submit">Register</button>
     </form>
+
+    <!-- Body section ends here -->
   </body>
 </html>

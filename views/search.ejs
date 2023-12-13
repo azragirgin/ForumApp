@@ -1,16 +1,30 @@
 <!-- search.ejs -->
+
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- Head section with the title and a link to the main CSS file -->
     <title>Search <%=shopName%></title>
     <link rel="stylesheet" type="text/css" href="/main.css" />
   </head>
   <body>
+    <!-- Body section starts here -->
+
+    <!-- Main heading indicating the page is for searching topics -->
     <h1>Search <%=shopName%></h1>
+
+    <!-- Form for submitting search queries to "/search-result" using the GET method -->
     <form action="/search-result" method="GET">
-      <p>What are you looking for?</p>
+      <!-- Paragraph providing a prompt for the user -->
+      <p>What topics are you looking for?</p>
+
+      <!-- Input box for entering search queries with an initial default value -->
       <input id="search-box" type="text" name="keyword" value="Default" />
+
+      <!-- Submit button to initiate the search -->
       <input type="submit" value="Search" />
     </form>
+
+    <!-- Body section ends here -->
   </body>
 </html>

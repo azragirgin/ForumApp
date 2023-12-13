@@ -1,18 +1,28 @@
 <!-- users.ejs -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Head section with metadata and a link to the main CSS file -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>List of Users</title>
     <link rel="stylesheet" type="text/css" href="/main.css" />
   </head>
   <body>
+    <!-- Body section starts here -->
+
+    <!-- Main heading indicating the page is for listing users -->
     <h1>List of Users</h1>
+
+    <!-- Unordered list to display the list of users -->
     <ul>
+      <!-- Loop through the users and display each user's username and email -->
       <% for (let i = 0; i < users.length; i++) { %>
       <li><%= users[i].username %> - <%= users[i].email %></li>
       <% } %>
     </ul>
+
+    <!-- Body section ends here -->
   </body>
 </html>

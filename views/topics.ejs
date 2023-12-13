@@ -1,16 +1,26 @@
 <!-- topics.ejs -->
+
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- Head section with the title and a link to the main CSS file -->
     <title>List of Topics</title>
     <link rel="stylesheet" type="text/css" href="/main.css" />
   </head>
   <body>
+    <!-- Body section starts here -->
+
+    <!-- Main heading indicating the page is for listing topics -->
     <h1>List of Topics</h1>
+
+    <!-- Unordered list to display the available topics -->
     <ul>
+      <!-- Loop through the available topics and display each topic's name -->
       <% for(let i = 0; i < availableTopics.length; i++) { %>
       <li><%= availableTopics[i].name %></li>
       <% } %>
     </ul>
+
+    <!-- Body section ends here -->
   </body>
 </html>
